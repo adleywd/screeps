@@ -1,15 +1,22 @@
+//Load Roles
+var roleHarvester = require('role.harvester');
+var manageCreeps = require('role.manageCreeps');
+var ROLE_HARVESTER = "harvester";
+
+// Main Loop
 module.exports.loop = function () {
-    var spawn1 = Game.spawns["Spawn1"];
-    var smallBody = [WORK,CARRY,MOVE];
+
+    manageCreeps.deleteCreep();
+
+    manageCreeps.run(ROLE_HARVESTER, false);
     
-    // Create a harvester    
-    if(spawn.canCreateCreep(body, name) == OK) {
-        var result = spawn.createCreep(smallBody, null, {role: 'harvester'});
-        if(_.isString(result)) {
-            console.log('The creep name is: '+result);
-        }
-        else {
-            console.log('Spawn creep error: '+result);
+    
+    
+    
+    for(var indx in Game.creeps) {
+        var creep = Game.creeps[indx];
+        if(creep.memory.role == ROLE_HARVESTER) {
+            roleHarvester.run(creep);
         }
     }
     
