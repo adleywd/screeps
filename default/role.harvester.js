@@ -1,4 +1,3 @@
-// Harvesters
 var roleHarvester = {
 
     /** @param {Creep} creep **/
