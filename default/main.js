@@ -1,6 +1,6 @@
 //Load Roles
-var deathCreeps = require('role.manageDeathCreeps');
-var spawnCreeps = require('role.manageSpawnCreeps');
+var deathCreeps = require('role.deathCreeps');
+var spawnCreeps = require('role.spawnCreeps');
 var roleHarvester = require('role.harvester');
 
 // Consts
