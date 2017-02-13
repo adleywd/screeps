@@ -34,9 +34,9 @@ var spawnCreeps = {
             }
         }
 
-        console.log("Quantidade de harvester: " + num_harvesters);
-        console.log("Quantidade de builders: " + num_builders);
-        console.log("Quantidade de upgrader: " + num_upgraders);
+        console.log("Quantidade de harvester: " + num_harvesters + "/" + MAX_HARVESTER);
+        console.log("Quantidade de builders: " + num_builders + "/" + MAX_BUILDER);
+        console.log("Quantidade de upgrader: " + num_upgraders + "/" + MAX_UPGRADER);
 
         if (num_harvesters == MAX_HARVESTER && num_builders == MAX_BUILDER && num_upgraders == MAX_UPGRADER) {
             MAX_HARVESTER = MAX_HARVESTER + 1;
@@ -84,6 +84,7 @@ var spawnCreeps = {
                 }
             }
         } else {
+            //If doesn't have any harverster
             if (spawn.canCreateCreep(smallBody, null) == OK) {
                 var result = spawn.createCreep(smallBody, null, { role: CONST_HARVESTER });
                 if (_.isString(result)) {
