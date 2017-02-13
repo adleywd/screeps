@@ -38,7 +38,7 @@ var spawnCreeps = {
         console.log("Quantidade de builders: " + num_builders + "/" + MAX_BUILDER);
         console.log("Quantidade de upgrader: " + num_upgraders + "/" + MAX_UPGRADER);
 
-        if (num_harvesters == MAX_HARVESTER && num_builders == MAX_BUILDER && num_upgraders == MAX_UPGRADER) {
+        if (num_harvesters >= MAX_HARVESTER && num_builders >= MAX_BUILDER && num_upgraders >= MAX_UPGRADER) {
             MAX_HARVESTER = MAX_HARVESTER + 1;
             MAX_BUILDER = MAX_BUILDER + 1;
             MAX_UPGRADER = MAX_UPGRADER + 1;
