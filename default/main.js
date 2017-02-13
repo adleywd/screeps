@@ -3,7 +3,7 @@ var deathCreeps = require('role.deathCreeps');
 var spawnCreeps = require('role.spawnCreeps');
 var roleHarvester = require('role.harvester');
 var roleBuilder = require('role.builder');
-var roleUpgrade = require('role.upgrader');
+var roleUpgrader = require('role.upgrader');
 
 // Consts
 var CONST_HARVESTER = "harvester";
