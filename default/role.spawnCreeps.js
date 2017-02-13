@@ -43,9 +43,47 @@ var spawnCreeps = {
             MAX_BUILDER = MAX_BUILDER + 1;
             MAX_UPGRADER = MAX_UPGRADER + 1;
         }
+        if (num_harvesters > 0) {
 
-        // Spawn a new harvester    
-        if (list_harvest.length <= MAX_HARVESTER) {
+            // Spawn a new harvester    
+            if (num_harvesters <= MAX_HARVESTER) {
+                if (spawn.canCreateCreep(smallBody, null) == OK) {
+                    var result = spawn.createCreep(smallBody, null, { role: CONST_HARVESTER });
+                    if (_.isString(result)) {
+                        console.log('The creep harvester name is: ' + result);
+                    }
+                    else {
+                        console.log('Spawn creep harvester error: ' + result);
+                    }
+                }
+            }
+
+            // Spawn a new builder  
+            if (num_builders <= MAX_BUILDER) {
+                if (spawn.canCreateCreep(smallBody, null) == OK) {
+                    var result = spawn.createCreep(smallBody, null, { role: CONST_BUILDER });
+                    if (_.isString(result)) {
+                        console.log('The creep builder name is: ' + result);
+                    }
+                    else {
+                        console.log('Spawn creep builder error: ' + result);
+                    }
+                }
+            }
+
+            // Spawn a new upgrader 
+            if (num_upgraders <= MAX_UPGRADER) {
+                if (spawn.canCreateCreep(smallBody, null) == OK) {
+                    var result = spawn.createCreep(smallBody, null, { role: CONST_UPGRADER });
+                    if (_.isString(result)) {
+                        console.log('The creep upgrader name is: ' + result);
+                    }
+                    else {
+                        console.log('Spawn creep upgrader error: ' + result);
+                    }
+                }
+            }
+        } else {
             if (spawn.canCreateCreep(smallBody, null) == OK) {
                 var result = spawn.createCreep(smallBody, null, { role: CONST_HARVESTER });
                 if (_.isString(result)) {
@@ -54,38 +92,6 @@ var spawnCreeps = {
                 else {
                     console.log('Spawn creep harvester error: ' + result);
                 }
-            } else {
-                console.log("Can not spawn new creep harvester: " + spawn.canCreateCreep(smallBody, null))
-            }
-        }
-
-        // Spawn a new builder  
-        if (list_builder.length <= MAX_BUILDER) {
-            if (spawn.canCreateCreep(smallBody, null) == OK) {
-                var result = spawn.createCreep(smallBody, null, { role: CONST_BUILDER });
-                if (_.isString(result)) {
-                    console.log('The creep builder name is: ' + result);
-                }
-                else {
-                    console.log('Spawn creep builder error: ' + result);
-                }
-            } else {
-                console.log("Can not spawn new creep builder: " + spawn.canCreateCreep(smallBody, null))
-            }
-        }
-
-        // Spawn a new upgrader 
-        if (list_upgrader.length <= MAX_UPGRADER) {
-            if (spawn.canCreateCreep(smallBody, null) == OK) {
-                var result = spawn.createCreep(smallBody, null, { role: CONST_UPGRADER });
-                if (_.isString(result)) {
-                    console.log('The creep upgrader name is: ' + result);
-                }
-                else {
-                    console.log('Spawn creep upgrader error: ' + result);
-                }
-            } else {
-                console.log("Can not spawn new creep upgrader: " + spawn.canCreateCreep(smallBody, null))
             }
         }
 
