@@ -1,4 +1,6 @@
-﻿var deathCreeps = {
+﻿// ManageDeathCreeps
+
+var deathCreeps = {
     run: function () {
         for (var name in Memory.creeps) {
             if (!Game.creeps[name]) {
@@ -8,5 +10,4 @@
         }
     }
 };
-
 module.exports = deathCreeps;
