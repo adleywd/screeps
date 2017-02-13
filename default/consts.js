@@ -1,4 +1,4 @@
-﻿const ROLE_HARVESTER = 'harvester';
+const ROLE_HARVESTER = 'harvester';
 const ROLE_BUILDER = 'builder';
 const ROLE_UPGRADER = 'upgrader';
 
