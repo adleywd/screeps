@@ -4,9 +4,9 @@ var smallBody = [WORK, CARRY, MOVE];
 var CONST_HARVESTER = "harvester";
 var CONST_BUILDER = "builder";
 var CONST_UPGRADER = "upgrader";
-var MAX_HARVESTER = 5;
-var MAX_BUILDER = 3;
-var MAX_UPGRADER = 5;
+var MAX_HARVESTER = 3;
+var MAX_BUILDER = 4;
+var MAX_UPGRADER = 2;
 
 var spawnCreeps = {
     /** @param {role} creep **/
@@ -22,19 +22,20 @@ var spawnCreeps = {
             if (Game.creeps[name].role == CONST_HARVESTER) {
                 list_harvest.push(Game.creeps[name]);
                 num_harvesters = list_harvest.length;
-                console.log("Quantidade de harvester: " + num_harvesters);
             }
             if (Game.creeps[name].role == CONST_BUILDER) {
                 list_builder.push(Game.creeps[name]);
                 num_builders = list_builder.length;
-                console.log("Quantidade de builders: " + num_builders);
             }
             if (Game.creeps[name].role == CONST_UPGRADER) {
                 list_upgrader.push(Game.creeps[name]);
                 num_upgraders = list_upgrader.length;
-                console.log("Quantidade de upgrader: " + num_upgraders);
             }
         }
+
+        console.log("Quantidade de harvester: " + num_harvesters);
+        console.log("Quantidade de builders: " + num_builders);
+        console.log("Quantidade de upgrader: " + num_upgraders);
 
         if (num_harvesters == MAX_HARVESTER && num_builders == MAX_BUILDER && num_upgraders == MAX_UPGRADER) {
             MAX_HARVESTER = MAX_HARVESTER + 1;

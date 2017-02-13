@@ -1,6 +1,4 @@
-﻿// ManageDeathCreeps
-
-var deathCreeps = {
+﻿var deathCreeps = {
     run: function () {
         for (var name in Memory.creeps) {
             if (!Game.creeps[name]) {
