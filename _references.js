@@ -4,6 +4,7 @@
 /// <reference path="default/role.builder.js" />
 /// <reference path="default/role.deathCreeps.js" />
 /// <reference path="default/role.harvester.js" />
+/// <reference path="default/role.repair.js" />
 /// <reference path="default/role.spawnCreeps.js" />
 /// <reference path="default/role.upgrader.js" />
 /// <reference path="legacy/main.js" />
