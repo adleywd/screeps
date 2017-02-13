@@ -18,17 +18,18 @@ var spawnCreeps = {
         var num_builders = 0;
         var num_upgraders = 0;
 
-        for (var name in Game.creeps) {
-            if (Game.creeps[name].role == CONST_HARVESTER) {
-                list_harvest.push(Game.creeps[name]);
+        for(var i in Game.creeps) {
+            var creep = Game.creeps[i];
+            if (creep.memory.role == CONST_HARVESTER) {
+                list_harvest.push(Game.creeps[i]);
                 num_harvesters = list_harvest.length;
             }
-            if (Game.creeps[name].role == CONST_BUILDER) {
-                list_builder.push(Game.creeps[name]);
+            if (creep.memory.role == CONST_BUILDER) {
+                list_builder.push(Game.creeps[i]);
                 num_builders = list_builder.length;
             }
-            if (Game.creeps[name].role == CONST_UPGRADER) {
-                list_upgrader.push(Game.creeps[name]);
+            if (creep.memory.role == CONST_UPGRADER) {
+                list_upgrader.push(Game.creeps[i]);
                 num_upgraders = list_upgrader.length;
             }
         }
