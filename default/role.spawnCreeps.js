@@ -78,7 +78,7 @@ var spawnCreeps = {
         }
 
 
-        if (num_harvesters > 0) {
+        if (num_harvesters > 1) {
 
             // Spawn a new harvester    
             if (num_harvesters <= max_harvester) {
