@@ -1,29 +1,27 @@
+// Requires
 var consts = require('consts');
 
-// Consts
-var spawn = Game.spawns["Spawn1"];
-var smallBody = [WORK, CARRY, MOVE];
-var mediumWorkBody = [WORK, WORK, CARRY, MOVE];
-var hardWorkBody = [WORK, WORK, WORK, CARRY, MOVE];
-var veryHardWorkBody = [WORK, WORK, WORK, WORK, CARRY, MOVE];
-var veryHardWorkMediumCarryBody = [WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE];
+var spawnList = [];
 
-var bodyTypes = [smallBody, mediumWorkBody, hardWorkBody, veryHardWorkBody, veryHardWorkMediumCarryBody];
-var bodyDefault = smallBody;
+for (let i in Game.spawns) {
+    spawnList.push(Game.spawns[i]);
+}
 
+// Variables don't do loop
+var spawn = spawnList[0];
+var bodyTypes = consts.BODY_TYPES;
+// BODY_TPYES[0] should be the smallest
+var bodyDefault = consts.BODY_TYPES[0];
+
+// Max creeps according to role
 var max_harvester = 3;
 var max_builder = 2;
 var max_upgrader = 2;
-var max_repairs = 2;
+var max_repair = 2;
 
 var spawnCreeps = {
     /** @param {role} creep **/
     run: function (role) {
-        var list_harvest = [];
-        var list_builder = [];
-        var list_upgrader = [];
-        var list_repair = [];
-
         var num_harvesters = 0;
         var num_builders = 0;
         var num_upgraders = 0;
@@ -34,36 +32,37 @@ var spawnCreeps = {
         for (var i in Game.creeps) {
             var creep = Game.creeps[i];
             if (creep.memory.role == consts.ROLE_HARVESTER) {
-                list_harvest.push(Game.creeps[i]);
-                num_harvesters = list_harvest.length;
+                num_harvesters++;
             }
             if (creep.memory.role == consts.ROLE_BUILDER) {
-                list_builder.push(Game.creeps[i]);
-                num_builders = list_builder.length;
+                num_builders++;
             }
             if (creep.memory.role == consts.ROLE_UPGRADER) {
-                list_upgrader.push(Game.creeps[i]);
-                num_upgraders = list_upgrader.length;
+                num_upgraders++;
             }
             if (creep.memory.role == consts.ROLE_REPAIR) {
-                list_repair.push(Game.creeps[i]);
-                num_repairs = list_repair.length;
+                num_repairs++;
             }
         }
 
         console.log("Quantidade de harvester: " + num_harvesters + "/" + max_harvester);
         console.log("Quantidade de builders: " + num_builders + "/" + max_builder);
         console.log("Quantidade de upgrader: " + num_upgraders + "/" + max_upgrader);
-        console.log("Quantidade de reparadores: " + num_repairs + "/" + max_repairs);
+        console.log("Quantidade de reparadores: " + num_repairs + "/" + max_repair);
 
+        // Update the max capacity of creeps according with creeps already spawned (check role by role)
+        max_harvester = num_harvesters > max_harvester ? num_harvesters : max_harvester
+        max_builder = num_builders > max_builder ? num_builders : max_builder
+        max_upgrader = num_upgraders > max_upgrader ? num_upgraders : max_upgrader
+        max_repair = num_repairs > max_repair ? num_repairs : max_repair
 
         // If all creeps have their max, add one more.
         if (num_harvesters >= max_harvester && num_builders >= max_builder
-                && num_upgraders >= max_upgrader && num_repairs >= max_repairs) {
+                && num_upgraders >= max_upgrader && num_repairs >= max_repair) {
             max_harvester++;
             max_builder++;
             max_upgrader++;
-            max_repairs++;
+            max_repair++;
         }
 
         // Define what body should use.
@@ -121,7 +120,7 @@ var spawnCreeps = {
             }
 
             // Spawn a new repair 
-            if (num_repairs <= max_repairs) {
+            if (num_repairs <= max_repair) {
                 if (spawn.canCreateCreep(bodyChosen, null) == OK) {
                     var result = spawn.createCreep(bodyChosen, null, { role: consts.ROLE_REPAIR });
                     if (_.isString(result)) {
