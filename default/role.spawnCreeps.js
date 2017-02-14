@@ -69,7 +69,7 @@ var spawnCreeps = {
         // Define what body should use.
         for (let i = bodyTypes.length - 1; i >= 0; i--) {
             if (spawn.canCreateCreep(bodyTypes[i], null) == OK) {
-                bodyChosen = bodyType[i];
+                bodyChosen = bodyTypes[i];
                 break;
             }
         }
