@@ -14,7 +14,7 @@ module.exports.loop = function () {
 
     deathCreeps.run();
 
-    spawnCreeps.run(CONST_HARVESTER);
+    spawnCreeps.run(ROLE_HARVESTER);
     
     for(var indx in Game.creeps) {
         var creep = Game.creeps[indx];
