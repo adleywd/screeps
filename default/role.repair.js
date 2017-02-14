@@ -30,6 +30,9 @@ var roleRepair = {
             }
         }else {
             var sources = creep.room.find(FIND_SOURCES);
+            for (let i in sources) {
+                console.log("Source: " + source[i])
+            }
             if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(sources[0]);
             }
