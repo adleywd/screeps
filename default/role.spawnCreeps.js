@@ -7,7 +7,7 @@ for (let i in Game.spawns) {
     spawnList.push(Game.spawns[i]);
 }
 
-// Variables don't do loop
+// Variables that don't do loop
 var spawn = spawnList[0];
 var bodyTypes = consts.BODY_TYPES;
 // BODY_TPYES[0] should be the smallest
