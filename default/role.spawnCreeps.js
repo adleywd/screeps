@@ -32,7 +32,7 @@ for (var i in Game.creeps) {
         num_upgraders++;
     }
     if (creep.memory.role == consts.ROLE_REPAIR) {
-        num_repairs++;
+        num_repair++;
     }
 }
 
@@ -40,7 +40,7 @@ for (var i in Game.creeps) {
 max_harvester = num_harvesters > max_harvester ? num_harvesters : max_harvester
 max_builder = num_builders > max_builder ? num_builders : max_builder
 max_upgrader = num_upgraders > max_upgrader ? num_upgraders : max_upgrader
-max_repair = num_repairs > max_repair ? num_repairs : max_repair
+max_repair = num_repair > max_repair ? num_repair : max_repair
 
 var spawnCreeps = {
     /** @param {role} creep **/
@@ -48,18 +48,18 @@ var spawnCreeps = {
         var num_harvesters = 0;
         var num_builders = 0;
         var num_upgraders = 0;
-        var num_repairs = 0;
+        var num_repair = 0;
 
         var bodyChosen = [];
 
         console.log("Quantidade de harvester: " + num_harvesters + "/" + max_harvester);
         console.log("Quantidade de builders: " + num_builders + "/" + max_builder);
         console.log("Quantidade de upgrader: " + num_upgraders + "/" + max_upgrader);
-        console.log("Quantidade de reparadores: " + num_repairs + "/" + max_repair);
+        console.log("Quantidade de reparadores: " + num_repair + "/" + max_repair);
 
         // If all creeps have their max, add one more.
         if (num_harvesters >= max_harvester && num_builders >= max_builder
-                && num_upgraders >= max_upgrader && num_repairs >= max_repair) {
+                && num_upgraders >= max_upgrader && num_repair >= max_repair) {
             max_harvester++;
             max_builder++;
             max_upgrader++;
@@ -124,11 +124,11 @@ var spawnCreeps = {
             }
 
             // Spawn a new repair 
-            if (num_repairs <= max_repair) {
+            if (num_repair <= max_repair) {
                 if (spawn.canCreateCreep(bodyChosen, null) == OK) {
                     var result = spawn.createCreep(bodyChosen, null, { role: consts.ROLE_REPAIR });
                     if (_.isString(result)) {
-                        num_repairs++;
+                        num_repair++;
                         console.log('The creep repair name is: ' + result);
                     }
                     else {
