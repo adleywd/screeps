@@ -19,6 +19,29 @@ var max_builder = 2;
 var max_upgrader = 2;
 var max_repair = 2;
 
+// Get all creeps separated by role.
+for (var i in Game.creeps) {
+    var creep = Game.creeps[i];
+    if (creep.memory.role == consts.ROLE_HARVESTER) {
+        num_harvesters++;
+    }
+    if (creep.memory.role == consts.ROLE_BUILDER) {
+        num_builders++;
+    }
+    if (creep.memory.role == consts.ROLE_UPGRADER) {
+        num_upgraders++;
+    }
+    if (creep.memory.role == consts.ROLE_REPAIR) {
+        num_repairs++;
+    }
+}
+
+// Update the max capacity of creeps according with creeps already spawned (check role by role)
+max_harvester = num_harvesters > max_harvester ? num_harvesters : max_harvester
+max_builder = num_builders > max_builder ? num_builders : max_builder
+max_upgrader = num_upgraders > max_upgrader ? num_upgraders : max_upgrader
+max_repair = num_repairs > max_repair ? num_repairs : max_repair
+
 var spawnCreeps = {
     /** @param {role} creep **/
     run: function (role) {
@@ -29,32 +52,10 @@ var spawnCreeps = {
 
         var bodyChosen = [];
 
-        for (var i in Game.creeps) {
-            var creep = Game.creeps[i];
-            if (creep.memory.role == consts.ROLE_HARVESTER) {
-                num_harvesters++;
-            }
-            if (creep.memory.role == consts.ROLE_BUILDER) {
-                num_builders++;
-            }
-            if (creep.memory.role == consts.ROLE_UPGRADER) {
-                num_upgraders++;
-            }
-            if (creep.memory.role == consts.ROLE_REPAIR) {
-                num_repairs++;
-            }
-        }
-
         console.log("Quantidade de harvester: " + num_harvesters + "/" + max_harvester);
         console.log("Quantidade de builders: " + num_builders + "/" + max_builder);
         console.log("Quantidade de upgrader: " + num_upgraders + "/" + max_upgrader);
         console.log("Quantidade de reparadores: " + num_repairs + "/" + max_repair);
-
-        // Update the max capacity of creeps according with creeps already spawned (check role by role)
-        max_harvester = num_harvesters > max_harvester ? num_harvesters : max_harvester
-        max_builder = num_builders > max_builder ? num_builders : max_builder
-        max_upgrader = num_upgraders > max_upgrader ? num_upgraders : max_upgrader
-        max_repair = num_repairs > max_repair ? num_repairs : max_repair
 
         // If all creeps have their max, add one more.
         if (num_harvesters >= max_harvester && num_builders >= max_builder
@@ -85,6 +86,7 @@ var spawnCreeps = {
                 if (spawn.canCreateCreep(bodyChosen, null) == OK) {
                     var result = spawn.createCreep(bodyChosen, null, { role: consts.ROLE_HARVESTER });
                     if (_.isString(result)) {
+                        num_harvesters++;
                         console.log('The creep harvester name is: ' + result);
                     }
                     else {
@@ -98,6 +100,7 @@ var spawnCreeps = {
                 if (spawn.canCreateCreep(bodyChosen, null) == OK) {
                     var result = spawn.createCreep(bodyChosen, null, { role: consts.ROLE_BUILDER });
                     if (_.isString(result)) {
+                        num_builders++;
                         console.log('The creep builder name is: ' + result);
                     }
                     else {
@@ -111,6 +114,7 @@ var spawnCreeps = {
                 if (spawn.canCreateCreep(bodyChosen, null) == OK) {
                     var result = spawn.createCreep(bodyChosen, null, { role: consts.ROLE_UPGRADER });
                     if (_.isString(result)) {
+                        num_upgraders++;
                         console.log('The creep upgrader name is: ' + result);
                     }
                     else {
@@ -124,6 +128,7 @@ var spawnCreeps = {
                 if (spawn.canCreateCreep(bodyChosen, null) == OK) {
                     var result = spawn.createCreep(bodyChosen, null, { role: consts.ROLE_REPAIR });
                     if (_.isString(result)) {
+                        num_repairs++;
                         console.log('The creep repair name is: ' + result);
                     }
                     else {
@@ -137,6 +142,7 @@ var spawnCreeps = {
             if (spawn.canCreateCreep(bodyChosen, null) == OK) {
                 var result = spawn.createCreep(bodyChosen, null, { role: consts.ROLE_HARVESTER });
                 if (_.isString(result)) {
+                    num_harvesters++;
                     console.log('The creep harvester name is: ' + result);
                 }
                 else {
