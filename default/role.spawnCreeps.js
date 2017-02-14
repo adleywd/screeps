@@ -19,6 +19,12 @@ var max_builder = 2;
 var max_upgrader = 2;
 var max_repair = 2;
 
+// Creeps count
+var num_harvesters = 0;
+var num_builders = 0;
+var num_upgraders = 0;
+var num_repair = 0;
+
 // Get all creeps separated by role.
 for (var i in Game.creeps) {
     var creep = Game.creeps[i];
@@ -45,11 +51,6 @@ max_repair = num_repair > max_repair ? num_repair : max_repair
 var spawnCreeps = {
     /** @param {role} creep **/
     run: function (role) {
-        var num_harvesters = 0;
-        var num_builders = 0;
-        var num_upgraders = 0;
-        var num_repair = 0;
-
         var bodyChosen = [];
 
         console.log("Quantidade de harvester: " + num_harvesters + "/" + max_harvester);
