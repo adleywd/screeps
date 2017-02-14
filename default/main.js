@@ -10,6 +10,8 @@ var CONST_HARVESTER = "harvester";
 var CONST_UPGRADER = "upgrader";
 var CONST_BUILDER = "builder";
 
+// How to activate safeMode: Game.spawns['Spawn1'].room.controller.activateSafeMode();
+
 // Main Loop
 module.exports.loop = function () {
 
