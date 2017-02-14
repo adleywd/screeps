@@ -1,14 +1,11 @@
 //Load Roles
+var consts = require('consts');
 var deathCreeps = require('role.deathCreeps');
 var spawnCreeps = require('role.spawnCreeps');
 var roleHarvester = require('role.harvester');
 var roleBuilder = require('role.builder');
 var roleUpgrader = require('role.upgrader');
-
-// Consts
-var CONST_HARVESTER = "harvester";
-var CONST_UPGRADER = "upgrader";
-var CONST_BUILDER = "builder";
+var roleRepair = require('role.repair');
 
 // How to activate safeMode: Game.spawns['Spawn1'].room.controller.activateSafeMode();
 
@@ -21,14 +18,17 @@ module.exports.loop = function () {
     
     for(var indx in Game.creeps) {
         var creep = Game.creeps[indx];
-        if (creep.memory.role == 'harvester') {
+        if (creep.memory.role == consts.ROLE_HARVESTER) {
             roleHarvester.run(creep);
         }
-        if (creep.memory.role == 'upgrader') {
+        if (creep.memory.role == consts.ROLE_UPGRADER) {
             roleUpgrader.run(creep);
         }
-        if (creep.memory.role == 'builder') {
+        if (creep.memory.role == consts.ROLE_BUILDER) {
             roleBuilder.run(creep);
+        }
+        if (creep.memory.role == consts.ROLE_REPAIR) {
+            roleRepair.run(creep);
         }
     }
     
