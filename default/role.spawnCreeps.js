@@ -49,12 +49,6 @@ for (var i in Game.creeps) {
     }
 }
 
-// Update the max capacity of creeps according with creeps already spawned (check role by role)
-max_harvester = num_harvesters > max_harvester ? num_harvesters : max_harvester
-max_builder = num_builders > max_builder ? num_builders : max_builder
-max_upgrader = num_upgraders > max_upgrader ? num_upgraders : max_upgrader
-max_repair = num_repair > max_repair ? num_repair : max_repair
-
 var spawnCreeps = {
     /** @param {role} creep **/
     run: function (role) {
@@ -92,21 +86,21 @@ var spawnCreeps = {
             }
 
             // Spawn a new builder
-            if (num_builders <= max_builder) {
+            else if (num_builders <= max_builder) {
                 if (spawn.canCreateCreep(bodyChosen, null) == OK) {
                     num_builders = helper.createCreep(spawn, num_builders, bodyChosen, consts.ROLE_BUILDER);
                 }
             }
 
             // Spawn a new upgrader
-            if (num_upgraders <= max_upgrader) {
+            else  if (num_upgraders <= max_upgrader) {
                 if (spawn.canCreateCreep(bodyChosen, null) == OK) {
                     num_upgraders = helper.createCreep(spawn, num_upgraders, bodyChosen, consts.ROLE_UPGRADER);
                 }
             }
 
             // Spawn a new repair
-            if (num_repair <= max_repair) {
+            else  if (num_repair <= max_repair) {
                 if (spawn.canCreateCreep(bodyChosen, null) == OK) {
                     num_repair = helper.createCreep(spawn, num_repair, bodyChosen, consts.ROLE_REPAIR);
                 }
