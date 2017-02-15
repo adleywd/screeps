@@ -13,6 +13,7 @@ var spawn = spawnList[0];
 var bodyTypes = consts.BODY_TYPES;
 // BODY_TPYES[0] should be the smallest
 var bodyDefault = consts.BODY_TYPES[0];
+var bodyChosen = [];
 
 // Max creeps according to role
 var max_harvester = 3;
@@ -58,7 +59,6 @@ max_repair = num_repair > max_repair ? num_repair : max_repair
 var spawnCreeps = {
     /** @param {role} creep **/
     run: function (role) {
-        var bodyChosen = [];
 
         console.log("Quantidade de harvester: " + num_harvesters + "/" + max_harvester);
         console.log("Quantidade de builders: " + num_builders + "/" + max_builder);
