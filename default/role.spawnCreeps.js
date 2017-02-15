@@ -20,6 +20,12 @@ var max_builder = 2;
 var max_upgrader = 2;
 var max_repair = 2;
 
+// Min creeps that should have according to role
+var min_harvester = 2;
+var min_builder = 2;
+var min_upgrader = 2;
+var min_repair = 2;
+
 // Creeps count
 var num_harvesters = 0;
 var num_builders = 0;
@@ -81,7 +87,7 @@ var spawnCreeps = {
         }
 
 
-        if (num_harvesters > 1) {
+        if (num_harvesters >= min_harvester || num_builders >= min_builder || num_upgraders >= min_builder || num_repair >= min_repair) {
 
             // Spawn a new harvester
             if (num_harvesters <= max_harvester) {
@@ -111,10 +117,21 @@ var spawnCreeps = {
                 }
             }
 
-        } else {
-            //If doesn't have any harverster
+        } else if (num_harvesters < min_harvester) {
             if (spawn.canCreateCreep(bodyChosen, null) == OK) {
                 num_harvesters = helper.checkResult(spawn, num_harvesters, consts.ROLE_HARVESTER);
+            }
+        } else if (num_builders < min_builder) {
+            if (spawn.canCreateCreep(bodyChosen, null) == OK) {
+                num_builders = helper.checkResult(spawn, num_builders, consts.ROLE_BUILDER);
+            }
+        } else if (num_upgraders < min_upgrader) {
+            if (spawn.canCreateCreep(bodyChosen, null) == OK) {
+                num_upgraders = helper.checkResult(spawn, num_upgraders, consts.ROLE_UPGRADER);
+            }
+        } else if (num_repair < min_repair){
+            if (spawn.canCreateCreep(bodyChosen, null) == OK) {
+                num_repair = helper.checkResult(spawn, num_repair, consts.ROLE_REPAIR);
             }
         }
 

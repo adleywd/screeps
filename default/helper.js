@@ -1,4 +1,4 @@
-function checkResult(spawn, counter, role) => {
+function checkResult(spawn, counter, role){
   const result = spawn.createCreep(bodyChosen, null, { role });
 
   if (_.isString(result)) {

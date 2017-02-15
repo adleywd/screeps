@@ -1,5 +1,6 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="default/consts.js" />
+/// <reference path="default/helper.js" />
 /// <reference path="default/main.js" />
 /// <reference path="default/role.builder.js" />
 /// <reference path="default/role.deathCreeps.js" />
