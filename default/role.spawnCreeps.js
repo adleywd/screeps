@@ -1,5 +1,6 @@
 // Requires
 var consts = require('consts');
+var helper = require('helper');
 
 var spawnList = [];
 
@@ -82,73 +83,38 @@ var spawnCreeps = {
 
         if (num_harvesters > 1) {
 
-            // Spawn a new harvester    
+            // Spawn a new harvester
             if (num_harvesters <= max_harvester) {
                 if (spawn.canCreateCreep(bodyChosen, null) == OK) {
-                    var result = spawn.createCreep(bodyChosen, null, { role: consts.ROLE_HARVESTER });
-                    if (_.isString(result)) {
-                        num_harvesters++;
-                        console.log('The creep harvester name is: ' + result);
-                    }
-                    else {
-                        console.log('Spawn creep harvester error: ' + result);
-                    }
+                  num_harvesters = helper.checkResult(spawn, num_harvesters, consts.ROLE_HARVESTER);
                 }
             }
 
-            // Spawn a new builder  
+            // Spawn a new builder
             if (num_builders <= max_builder) {
                 if (spawn.canCreateCreep(bodyChosen, null) == OK) {
-                    var result = spawn.createCreep(bodyChosen, null, { role: consts.ROLE_BUILDER });
-                    if (_.isString(result)) {
-                        num_builders++;
-                        console.log('The creep builder name is: ' + result);
-                    }
-                    else {
-                        console.log('Spawn creep builder error: ' + result);
-                    }
+                  num_builders = helper.checkResult(spawn, num_builders, consts.ROLE_BUILDER);
                 }
             }
 
-            // Spawn a new upgrader 
+            // Spawn a new upgrader
             if (num_upgraders <= max_upgrader) {
                 if (spawn.canCreateCreep(bodyChosen, null) == OK) {
-                    var result = spawn.createCreep(bodyChosen, null, { role: consts.ROLE_UPGRADER });
-                    if (_.isString(result)) {
-                        num_upgraders++;
-                        console.log('The creep upgrader name is: ' + result);
-                    }
-                    else {
-                        console.log('Spawn creep upgrader error: ' + result);
-                    }
+                  num_upgraders = helper.checkResult(spawn, num_upgraders, consts.ROLE_UPGRADER);
                 }
             }
 
-            // Spawn a new repair 
+            // Spawn a new repair
             if (num_repair <= max_repair) {
                 if (spawn.canCreateCreep(bodyChosen, null) == OK) {
-                    var result = spawn.createCreep(bodyChosen, null, { role: consts.ROLE_REPAIR });
-                    if (_.isString(result)) {
-                        num_repair++;
-                        console.log('The creep repair name is: ' + result);
-                    }
-                    else {
-                        console.log('Spawn creep repair error: ' + result);
-                    }
+                  num_repair = helper.checkResult(spawn, num_repair, consts.ROLE_REPAIR);
                 }
             }
 
         } else {
             //If doesn't have any harverster
             if (spawn.canCreateCreep(bodyChosen, null) == OK) {
-                var result = spawn.createCreep(bodyChosen, null, { role: consts.ROLE_HARVESTER });
-                if (_.isString(result)) {
-                    num_harvesters++;
-                    console.log('The creep harvester name is: ' + result);
-                }
-                else {
-                    console.log('Spawn creep harvester error: ' + result);
-                }
+                num_harvesters = helper.checkResult(spawn, num_harvesters, consts.ROLE_HARVESTER);
             }
         }
 
