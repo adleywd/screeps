@@ -3,10 +3,10 @@ function createCreep(spawn, counter, bodyChosen, role) {
 
   if (_.isString(result)) {
       counter++;
-      console.log('The creep builder name is: ' + result);
+      console.log('Creating new '+role+' creep: ' + result);
   }
   else {
-      console.log('Spawn creep builder error: ' + result);
+      console.log('Spawn '+role+' creep error: ' + result);
   }
 
   return counter;

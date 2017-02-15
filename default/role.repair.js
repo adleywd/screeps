@@ -26,9 +26,7 @@ var roleRepair = {
             if (targets.length > 0) {
                 if (creep.repair(targets[0]) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets[0]);
-                } else {
-                    console.log(creep.repair(targets[0]));
-                }
+                } 
             }
         }else {
             var sources = creep.room.find(FIND_SOURCES);

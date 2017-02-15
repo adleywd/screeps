@@ -11,9 +11,8 @@ for (let i in Game.spawns) {
 // Variables that don't do loop
 var spawn = spawnList[0];
 var bodyTypes = consts.BODY_TYPES;
-// BODY_TPYES[0] should be the smallest
-var bodyDefault = consts.BODY_TYPES[0];
-var bodyChosen = [];
+// Start body chosen with BODY_TPYES[0] should be the smallest
+var bodyChosen = consts.BODY_TYPES[0];
 
 // Max creeps according to role
 var max_harvester = 3;
@@ -80,10 +79,6 @@ var spawnCreeps = {
                 bodyChosen = bodyTypes[i];
                 break;
             }
-        }
-        // If they can't respawn any body, select default one;
-        if (bodyChosen.length == 0) {
-            bodyChosen = bodyDefault;
         }
 
         // Check if have the min creep in each role.
