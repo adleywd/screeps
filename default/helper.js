@@ -1,5 +1,5 @@
-function checkResult(spawn, counter, role){
-  const result = spawn.createCreep(bodyChosen, null, { role });
+function createCreep(spawn, counter, bodyChosen, role) {
+  var result = spawn.createCreep(bodyChosen, null, { role });
 
   if (_.isString(result)) {
       counter++;
@@ -13,5 +13,5 @@ function checkResult(spawn, counter, role){
 }
 
 module.exports = {
-  checkResult
+    createCreep
 }

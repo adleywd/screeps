@@ -86,52 +86,52 @@ var spawnCreeps = {
             bodyChosen = bodyDefault;
         }
 
-
+        // Check if have the min creep in each role.
         if (num_harvesters >= min_harvester || num_builders >= min_builder || num_upgraders >= min_builder || num_repair >= min_repair) {
 
             // Spawn a new harvester
             if (num_harvesters <= max_harvester) {
                 if (spawn.canCreateCreep(bodyChosen, null) == OK) {
-                  num_harvesters = helper.checkResult(spawn, num_harvesters, consts.ROLE_HARVESTER);
+                    num_harvesters = helper.createCreep(spawn, num_harvesters, bodyChosen, consts.ROLE_HARVESTER);
                 }
             }
 
             // Spawn a new builder
             if (num_builders <= max_builder) {
                 if (spawn.canCreateCreep(bodyChosen, null) == OK) {
-                  num_builders = helper.checkResult(spawn, num_builders, consts.ROLE_BUILDER);
+                    num_builders = helper.createCreep(spawn, num_builders, bodyChosen, consts.ROLE_BUILDER);
                 }
             }
 
             // Spawn a new upgrader
             if (num_upgraders <= max_upgrader) {
                 if (spawn.canCreateCreep(bodyChosen, null) == OK) {
-                  num_upgraders = helper.checkResult(spawn, num_upgraders, consts.ROLE_UPGRADER);
+                    num_upgraders = helper.createCreep(spawn, num_upgraders, bodyChosen, consts.ROLE_UPGRADER);
                 }
             }
 
             // Spawn a new repair
             if (num_repair <= max_repair) {
                 if (spawn.canCreateCreep(bodyChosen, null) == OK) {
-                  num_repair = helper.checkResult(spawn, num_repair, consts.ROLE_REPAIR);
+                    num_repair = helper.createCreep(spawn, num_repair, bodyChosen, consts.ROLE_REPAIR);
                 }
             }
 
         } else if (num_harvesters < min_harvester) {
             if (spawn.canCreateCreep(bodyChosen, null) == OK) {
-                num_harvesters = helper.checkResult(spawn, num_harvesters, consts.ROLE_HARVESTER);
+                num_harvesters = helper.createCreep(spawn, num_harvesters, bodyChosen, consts.ROLE_HARVESTER);
             }
         } else if (num_builders < min_builder) {
             if (spawn.canCreateCreep(bodyChosen, null) == OK) {
-                num_builders = helper.checkResult(spawn, num_builders, consts.ROLE_BUILDER);
+                num_builders = helper.createCreep(spawn, num_builders, bodyChosen, consts.ROLE_BUILDER);
             }
         } else if (num_upgraders < min_upgrader) {
             if (spawn.canCreateCreep(bodyChosen, null) == OK) {
-                num_upgraders = helper.checkResult(spawn, num_upgraders, consts.ROLE_UPGRADER);
+                num_upgraders = helper.createCreep(spawn, num_upgraders, bodyChosen, consts.ROLE_UPGRADER);
             }
         } else if (num_repair < min_repair){
             if (spawn.canCreateCreep(bodyChosen, null) == OK) {
-                num_repair = helper.checkResult(spawn, num_repair, consts.ROLE_REPAIR);
+                num_repair = helper.createCreep(spawn, num_repair, bodyChosen, consts.ROLE_REPAIR);
             }
         }
 
