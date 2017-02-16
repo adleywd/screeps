@@ -33,8 +33,8 @@ var max_repair = 2;
 // Min creeps that should have according to role
 var min_harvester = 2;
 var min_builder = 2;
-var min_upgrader = 2;
-var min_repair = 2;
+var min_upgrader = 1;
+var min_repair = 1;
 
 // Creeps count
 var num_harvesters = 0;
