@@ -75,11 +75,8 @@ max_repair = num_repair > max_repair ? num_repair : max_repair
 
 // Main Loop
 module.exports.loop = function () {
-
     deathCreeps.run();
-
     spawnCreeps();
-
     
     for(var indx in Game.creeps) {
         var creep = Game.creeps[indx];
@@ -96,7 +93,6 @@ module.exports.loop = function () {
             roleRepair.run(creep);
         }
     }
-    
 }
 
 function spawnCreeps() {
