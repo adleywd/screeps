@@ -64,10 +64,12 @@ for (var i in Game.creeps) {
 }
 
 // Update the max capacity of creeps according with creeps already spawned (check role by role)
-max_harvester = num_harvesters > max_harvester ? num_harvesters : max_harvester
+// BUG
+/*max_harvester = num_harvesters > max_harvester ? num_harvesters : max_harvester
 max_builder = num_builders > max_builder ? num_builders : max_builder
 max_upgrader = num_upgraders > max_upgrader ? num_upgraders : max_upgrader
 max_repair = num_repair > max_repair ? num_repair : max_repair
+*/
 
 /*-------------------------*/
 /* -- End Spawn Config --*/
