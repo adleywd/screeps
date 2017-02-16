@@ -89,15 +89,6 @@ function deathCreeps() {
     /* ----- Clear death creeps config -----*/
         for (var name in Memory.creeps) {
             if (!Game.creeps[name]) {
-                if (Memory.creeps[name].role == consts.ROLE_HARVESTER) {
-                    num_harvesters--;
-                } else if (Memory.creeps[name].role == consts.ROLE_BUILDER) {
-                    num_builders--;
-                } else if (Memory.creeps[name].role == consts.ROLE_UPGRADER) {
-                    num_upgraders--;
-                } else if (Memory.creeps[name].role == consts.ROLE_REPAIR) {
-                    num_repair--;
-                }
                 delete Memory.creeps[name];
                 console.log('Clearing non-existing creep memory:', name);
             }
