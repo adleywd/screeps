@@ -1,5 +1,6 @@
 //Load Roles
 var consts = require('consts');
+var helper = require('helper');
 var deathCreeps = require('deathCreeps');
 var roleHarvester = require('role.harvester');
 var roleBuilder = require('role.builder');
@@ -12,12 +13,8 @@ var roleRepair = require('role.repair');
 /* -----Spawn Config -----*/
 /*-------------------------*/
 
-// Requires
-var consts = require('consts');
-var helper = require('helper');
-
+// Get spawn list
 var spawnList = [];
-
 for (let i in Game.spawns) {
     spawnList.push(Game.spawns[i]);
 }
