@@ -1,7 +1,6 @@
 //Load Roles
 var consts = require('consts');
 var helper = require('helper');
-var deathCreeps = require('deathCreeps');
 var roleHarvester = require('role.harvester');
 var roleBuilder = require('role.builder');
 var roleUpgrader = require('role.upgrader');
@@ -60,21 +59,13 @@ for (var i in Game.creeps) {
     }
 }
 
-// Update the max capacity of creeps according with creeps already spawned (check role by role)
-// BUG
-/*max_harvester = num_harvesters > max_harvester ? num_harvesters : max_harvester
-max_builder = num_builders > max_builder ? num_builders : max_builder
-max_upgrader = num_upgraders > max_upgrader ? num_upgraders : max_upgrader
-max_repair = num_repair > max_repair ? num_repair : max_repair
-*/
-
 /*-------------------------*/
 /* -- End Spawn Config --*/
 /*-------------------------*/
 
 // Main Loop
 module.exports.loop = function () {
-    deathCreeps.run();
+    deathCreeps();
     spawnCreeps();
     
     for(var indx in Game.creeps) {
@@ -92,6 +83,25 @@ module.exports.loop = function () {
             roleRepair.run(creep);
         }
     }
+}
+
+function deathCreeps() {
+    /* ----- Clear death creeps config -----*/
+        for (var name in Memory.creeps) {
+            if (!Game.creeps[name]) {
+                if (Memory.creeps[name].role == consts.ROLE_HARVESTER) {
+                    num_harvesters--;
+                } else if (Memory.creeps[name].role == consts.ROLE_BUILDER) {
+                    num_builders--;
+                } else if (Memory.creeps[name].role == consts.ROLE_UPGRADER) {
+                    num_upgraders--;
+                } else if (Memory.creeps[name].role == consts.ROLE_REPAIR) {
+                    num_repair--;
+                }
+                delete Memory.creeps[name];
+                console.log('Clearing non-existing creep memory:', name);
+            }
+        }
 }
 
 function spawnCreeps() {
