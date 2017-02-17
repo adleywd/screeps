@@ -45,16 +45,16 @@ var num_repair = 0;
 // Get all creeps separated by role.
 for (var i in Game.creeps) {
     var creep = Game.creeps[i];
-    if (creep.memory.role == consts.ROLE_HARVESTER) {
+    if (helper.isHarvester(creep)) {
         num_harvesters++;
     }
-    if (creep.memory.role == consts.ROLE_BUILDER) {
+    if (helper.isBuilder(creep)) {
         num_builders++;
     }
-    if (creep.memory.role == consts.ROLE_UPGRADER) {
+    if (helper.isUpgrader(creep)) {
         num_upgraders++;
     }
-    if (creep.memory.role == consts.ROLE_REPAIR) {
+    if (helper.isRepair(creep)) {
         num_repair++;
     }
 }
@@ -67,19 +67,19 @@ for (var i in Game.creeps) {
 module.exports.loop = function () {
     deathCreeps();
     spawnCreeps();
-    
+
     for(var indx in Game.creeps) {
         var creep = Game.creeps[indx];
-        if (creep.memory.role == consts.ROLE_HARVESTER) {
+        if (helper.isHarvester(creep)) {
             roleHarvester.run(creep);
         }
-        if (creep.memory.role == consts.ROLE_UPGRADER) {
+        if (helper.isUpgrader(creep)) {
             roleUpgrader.run(creep);
         }
-        if (creep.memory.role == consts.ROLE_BUILDER) {
+        if (helper.isBuilder(creep)) {
             roleBuilder.run(creep);
         }
-        if (creep.memory.role == consts.ROLE_REPAIR) {
+        if (helper.isRepair(creep)) {
             roleRepair.run(creep);
         }
     }

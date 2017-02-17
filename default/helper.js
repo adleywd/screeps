@@ -1,3 +1,5 @@
+var consts = require('consts');
+
 function createCreep(spawn, counter, bodyChosen, role) {
   var result = spawn.createCreep(bodyChosen, null, { role });
 
@@ -12,6 +14,26 @@ function createCreep(spawn, counter, bodyChosen, role) {
   return counter;
 }
 
+function isHarvester(creep){
+  return creep.memory.role == consts.ROLE_HARVESTER;
+}
+
+function isBuilder(creep){
+  return creep.memory.role == consts.ROLE_BUILDER;
+}
+
+function isUpgrader(creep){
+  return creep.memory.role == consts.ROLE_UPGRADER;
+}
+
+function isRepair(creep){
+  return creep.memory.role == consts.ROLE_REPAIR;
+}
+
 module.exports = {
-    createCreep
+    createCreep,
+    isHarvester,
+    isBuilder,
+    isUpgrader,
+    isRepair
 }
