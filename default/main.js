@@ -68,15 +68,15 @@ module.exports.loop = function () {
     deathCreeps();
     spawnCreeps();
 
-    for(var indx in Game.creeps) {
+    for (var indx in Game.creeps) {
         var creep = Game.creeps[indx];
         if (helper.isHarvester(creep)) {
             roleHarvester.run(creep);
         }
-        if (helper.isUpgrader(creep)) {
+        if (helper.isBuilder(creep)) {
             roleUpgrader.run(creep);
         }
-        if (helper.isBuilder(creep)) {
+        if (helper.isUpgrader(creep)) {
             roleBuilder.run(creep);
         }
         if (helper.isRepair(creep)) {
@@ -87,12 +87,12 @@ module.exports.loop = function () {
 
 function deathCreeps() {
     /* ----- Clear death creeps config -----*/
-        for (var name in Memory.creeps) {
-            if (!Game.creeps[name]) {
-                delete Memory.creeps[name];
-                console.log('Clearing non-existing creep memory:', name);
-            }
+    for (var name in Memory.creeps) {
+        if (!Game.creeps[name]) {
+            delete Memory.creeps[name];
+            console.log('Clearing non-existing creep memory:', name);
         }
+    }
 }
 
 function spawnCreeps() {
