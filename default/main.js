@@ -65,7 +65,6 @@ for (var i in Game.creeps) {
 
 // Main Loop
 module.exports.loop = function () {
-    deathCreeps();
     spawnCreeps();
 
     for (var indx in Game.creeps) {
@@ -85,7 +84,9 @@ module.exports.loop = function () {
     }
 }
 
-function deathCreeps() {
+function spawnCreeps() {
+    /* ----- Spawn Config -----*/
+
     /* ----- Clear death creeps config -----*/
     for (var name in Memory.creeps) {
         if (!Game.creeps[name]) {
@@ -93,10 +94,6 @@ function deathCreeps() {
             console.log('Clearing non-existing creep memory:', name);
         }
     }
-}
-
-function spawnCreeps() {
-    /* ----- Spawn Config -----*/
 
     console.log("Quantidade de harvester: " + num_harvesters + "/" + max_harvester);
     console.log("Quantidade de builders: " + num_builders + "/" + max_builder);
