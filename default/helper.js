@@ -1,4 +1,5 @@
 var consts = require('consts');
+var _ = require('lodash');
 
 function createCreep(spawn, counter, bodyChosen, role) {
   var result = spawn.createCreep(bodyChosen, null, { role });
@@ -28,6 +29,10 @@ function isUpgrader(creep){
 
 function isRepair(creep){
   return creep.memory.role == consts.ROLE_REPAIR;
+}
+
+function getCreepsTier(gcl_level, lastTier) {
+    return gcl_level >= lastTier ? consts.CREEP_TIER[lastTier] : consts.CREEP_TIER[gcl_level]
 }
 
 module.exports = {
