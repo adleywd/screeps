@@ -35,10 +35,50 @@ function getCreepsTier(gcl_level, lastTier) {
     return gcl_level >= lastTier ? consts.CREEP_TIER[lastTier] : consts.CREEP_TIER[gcl_level]
 }
 
+function updateCreepsTier(gcl_level, creepTier) {
+    Memory.gcl.level = gcl_level;
+    Memory.creepTier = creepTier;
+    console.log("New gcl level: " + Memory.gcl.level + " | New Creep Tier: " + Memory.creepTier.num_tier);
+}
+
+/* ----- Clear death creeps config -----*/
+function clearDeadCreeps() {
+    for (var name in Memory.creeps) {
+        if (!Game.creeps[name]) {
+            delete Memory.creeps[name];
+            console.log('Clearing non-existing creep memory:', name);
+        }
+    }
+}
+
+function updateInitialCreepCount() {
+
+    clearDeadCreeps();
+
+    for (var name in Game.creeps) {
+        var creep = Game.creeps[name];
+        if (isHarvester(creep)) {
+            Memory.creepsCount.num_harversters++;
+        }
+        if (isBuilder(creep)) {
+            Memory.creepsCount.num_builder++;
+        }
+        if (isUpgrader(creep)) {
+            Memory.creepsCount.num_upgrader++;
+        }
+        if (isRepair(creep)) {
+            Memory.creepsCount.num_repair++;
+        }
+    }
+}
+
 module.exports = {
     createCreep,
     isHarvester,
     isBuilder,
     isUpgrader,
-    isRepair
+    isRepair,
+    getCreepsTier,
+    updateCreepsTier,
+    clearDeadCreeps
 }

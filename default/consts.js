@@ -15,6 +15,7 @@ const veryHardWorkMediumCarryBody = [WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE]
 const BODY_TYPES = [smallBody, mediumWorkBody, hardWorkBody, veryHardWorkBody, veryHardWorkMediumCarryBody];
 
 const creepTier_Zero = {
+    num_tier : 0,
     max_harversters: 2,
     max_builder: 1,
     max_upgrader: 2,
@@ -22,6 +23,7 @@ const creepTier_Zero = {
 };
 
 const creepTier_One = {
+    num_tier: 1,
     max_harversters: 4,
     max_builder: 3,
     max_upgrader: 4,
@@ -29,6 +31,7 @@ const creepTier_One = {
 };
 
 const creepTier_Two = {
+    num_tier: 2,
     max_harversters: 7,
     max_builder: 4,
     max_upgrader: 7,
@@ -36,6 +39,7 @@ const creepTier_Two = {
 };
 
 const creepTier_Three = {
+    num_tier: 3,
     max_harversters: 14,
     max_builder: 8,
     max_upgrader: 10,
@@ -43,6 +47,7 @@ const creepTier_Three = {
 };
 
 const creepTier_Four = {
+    num_tier: 4,
     max_harversters: 28,
     max_builder: 20,
     max_upgrader: 22,
@@ -50,6 +55,7 @@ const creepTier_Four = {
 };
 
 const creepTier_Five = {
+    num_tier: 5,
     max_harversters: 56,
     max_builder: 36,
     max_upgrader: 44,
@@ -57,7 +63,6 @@ const creepTier_Five = {
 };
 
 const CREEPS_TIER = [creepTier_Zero, creepTier_One, creepTier_Two, creepTier_Three, creepTier_Four, creepTier_Five]
-
 
 module.exports = {
     ROLE_HARVESTER,
