@@ -1,4 +1,4 @@
-﻿//Load Requires
+//Load Requires
 var _ = require('lodash');
 var consts = require('consts');
 var helper = require('helper');
