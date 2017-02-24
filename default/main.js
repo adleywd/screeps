@@ -7,7 +7,16 @@ var roleBuilder = require('role.builder');
 var roleUpgrader = require('role.upgrader');
 var roleRepair = require('role.repair');
 
-var creepTier = getCreepsTier(Game.gcl.level, consts.CREEPS_TIER.length - 1);
+var creepTier = helper.getCreepsTier(Game.gcl.level, --consts.CREEPS_TIER.length);
+
+// Get spawn list
+var spawnList = [];
+for (let i in Game.spawns) {
+    spawnList.push(Game.spawns[i]);
+}
+
+// Variables that don't do loop
+var spawn = spawnList[0];
 
 Memory.creepsCount = {
     num_harversters: 0,
@@ -21,13 +30,12 @@ helper.updateInitialCreepCount();
 
 // Start memory
 Memory.creepTier = creepTier;
-Memory.gcl.level = Game.gcl.level
-
+Memory.mylevel = Game.gcl.level;
 
 module.exports.loop = function () {
     var currentLevel = Game.gcl.level;
-    if (currentLevel != Memory.gcl.level) {
-        var newCreepTier = getCreepsTier(currentLevel, consts.CREEPS_TIER.length - 1);
+    if (currentLevel != Memory.mylevel) {
+        var newCreepTier = helper.getCreepsTier(currentLevel, --consts.CREEPS_TIER.length);
         helper.updateCreepsTier(currentLevel, newCreepTier);
     }
 
@@ -42,7 +50,7 @@ module.exports.loop = function () {
         }
     }
     // Spawn a new builder
-    if (Memory.creepsCount.num_builder <= Memory.creepTier.max_builder && Memory.creep.max_builder > 0) {
+    if (Memory.creepsCount.num_builder <= Memory.creepTier.max_builder && Memory.creepTier.max_builder > 0) {
         if (spawn.canCreateCreep(bodyChosen, null) == OK) {
             Memory.creepsCount.num_builder = helper.createCreep(spawn, Memory.creepsCount.num_builder, bodyChosen, consts.ROLE_BUILDER);
         }

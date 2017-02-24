@@ -2,37 +2,37 @@ var consts = require('consts');
 var _ = require('lodash');
 
 function createCreep(spawn, counter, bodyChosen, role) {
-  var result = spawn.createCreep(bodyChosen, null, { role });
+    var result = spawn.createCreep(bodyChosen, null, { role });
 
-  if (_.isString(result)) {
-      counter++;
-      console.log('Creating new '+role+' creep: ' + result);
-  }
-  else {
-      console.log('Spawn '+role+' creep error: ' + result);
-  }
+    if (_.isString(result)) {
+        counter++;
+        console.log('Creating new ' + role + ' creep: ' + result);
+    }
+    else {
+        console.log('Spawn ' + role + ' creep error: ' + result);
+    }
 
-  return counter;
+    return counter;
 }
 
-function isHarvester(creep){
-  return creep.memory.role == consts.ROLE_HARVESTER;
+function isHarvester(creep) {
+    return creep.memory.role == consts.ROLE_HARVESTER;
 }
 
-function isBuilder(creep){
-  return creep.memory.role == consts.ROLE_BUILDER;
+function isBuilder(creep) {
+    return creep.memory.role == consts.ROLE_BUILDER;
 }
 
-function isUpgrader(creep){
-  return creep.memory.role == consts.ROLE_UPGRADER;
+function isUpgrader(creep) {
+    return creep.memory.role == consts.ROLE_UPGRADER;
 }
 
-function isRepair(creep){
-  return creep.memory.role == consts.ROLE_REPAIR;
+function isRepair(creep) {
+    return creep.memory.role == consts.ROLE_REPAIR;
 }
 
 function getCreepsTier(gcl_level, lastTier) {
-    return gcl_level >= lastTier ? consts.CREEP_TIER[lastTier] : consts.CREEP_TIER[gcl_level]
+    return gcl_level >= lastTier ? consts.CREEPS_TIER[lastTier] : consts.CREEPS_TIER[gcl_level]
 }
 
 function updateCreepsTier(gcl_level, creepTier) {
@@ -80,5 +80,6 @@ module.exports = {
     isRepair,
     getCreepsTier,
     updateCreepsTier,
-    clearDeadCreeps
+    clearDeadCreeps,
+    updateInitialCreepCount
 }

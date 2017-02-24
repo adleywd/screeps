@@ -15,7 +15,7 @@ const veryHardWorkMediumCarryBody = [WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE]
 const BODY_TYPES = [smallBody, mediumWorkBody, hardWorkBody, veryHardWorkBody, veryHardWorkMediumCarryBody];
 
 const creepTier_Zero = {
-    num_tier : 0,
+    num_tier: 0,
     max_harversters: 2,
     max_builder: 1,
     max_upgrader: 2,
@@ -62,7 +62,7 @@ const creepTier_Five = {
     max_repair: 36
 };
 
-const CREEPS_TIER = [creepTier_Zero, creepTier_One, creepTier_Two, creepTier_Three, creepTier_Four, creepTier_Five]
+const CREEPS_TIER = [creepTier_Zero, creepTier_One, creepTier_Two, creepTier_Three, creepTier_Four, creepTier_Five];
 
 module.exports = {
     ROLE_HARVESTER,
