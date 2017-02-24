@@ -9,6 +9,10 @@ var roleRepair = require('role.repair');
 
 var creepTier = helper.getCreepsTier(Game.gcl.level, --consts.CREEPS_TIER.length);
 
+var bodyTypes = consts.BODY_TYPES;
+// Start body chosen with BODY_TPYES[0] should be the smallest
+var bodyChosen = consts.BODY_TYPES[0];
+
 // Get spawn list
 var spawnList = [];
 for (let i in Game.spawns) {
@@ -39,9 +43,16 @@ module.exports.loop = function () {
         helper.updateCreepsTier(currentLevel, newCreepTier);
     }
 
-    // Clear dead creeps
+    // Clear dead creeps from memory
     helper.clearDeadCreeps();
-    var bodyChosen = [WORK, CARRY, MOVE];
+
+    // Define what body should use.
+    for (let i = bodyTypes.length - 1; i >= 0; i--) {
+        if (spawn.canCreateCreep(bodyTypes[i], null) == OK) {
+            bodyChosen = bodyTypes[i];
+            break;
+        }
+    }
 
     // Spawn a new harvester
     if (Memory.creepsCount.num_harvesters <= Memory.creepTier.max_harvester && Memory.creep.max_harvester > 0) {
